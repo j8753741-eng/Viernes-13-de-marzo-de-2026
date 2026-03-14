@@ -12,12 +12,8 @@ body{
 margin:0;
 background:linear-gradient(180deg,#02020a,#0b0620,#160c2e);
 font-family:Poppins;
-display:flex;
-align-items:center;
-justify-content:center;
-min-height:100vh;
 color:white;
-overflow:hidden;
+overflow-x:hidden;
 }
 
 /* estrellas fondo */
@@ -70,6 +66,12 @@ from{transform:translateY(0);}
 to{transform:translateY(-110vh);}
 }
 
+  .container{
+display:flex;
+justify-content:center;
+padding:60px 20px;
+  }
+
 /* carta */
 
 .carta{
@@ -108,17 +110,37 @@ margin-bottom:5px;
 
 .starName{
 text-align:center;
-font-size:28px;
-margin-bottom:30px;
-letter-spacing:4px;
-color:#fff;
-text-shadow:0 0 10px #fff,0 0 25px #c084ff,0 0 50px #c084ff;
-animation:twinkle 3s infinite alternate;
+font-size:34px;
+margin-bottom:35px;
+font-family:"Playfair Display";
+
+background:linear-gradient(
+90deg,
+#ffffff,
+#e9d5ff,
+#c084ff,
+#a855f7,
+#c084ff,
+#ffffff
+);
+
+background-size:300%;
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:metalShine 6s linear infinite;
+
+text-shadow:
+0 0 10px rgba(200,150,255,0.8),
+0 0 25px rgba(168,85,247,0.6),
+0 0 45px rgba(168,85,247,0.4);
+
 }
 
-@keyframes twinkle{
-from{opacity:0.7;}
-to{opacity:1;}
+@keyframes metalShine{
+0%{background-position:0%}
+100%{background-position:300%}
 }
 
 .texto{
