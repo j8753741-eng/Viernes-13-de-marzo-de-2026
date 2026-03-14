@@ -162,30 +162,42 @@ margin:8px 0;
 
 .signature{
 
-margin-top:45px;
+margin-top:50px;
 
 font-family:Great Vibes;
 
-font-size:40px;
+font-size:42px;
 
-white-space:nowrap;
+text-align:right;
 
-overflow:hidden;
+/* brillo metálico diferente */
 
-border-right:3px solid;
+background:linear-gradient(
+90deg,
+#f5f3ff,
+#ddd6fe,
+#a78bfa,
+#7c3aed,
+#a78bfa,
+#f5f3ff
+);
 
-width:0;
+background-size:250%;
 
-animation:typing 4s steps(30,end) forwards, blink .7s infinite;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:signatureShine 8s linear infinite;
+
+text-shadow:
+0 0 8px rgba(200,170,255,0.6),
+0 0 18px rgba(124,58,237,0.4);
 
 }
 
-@keyframes typing{
-to{width:260px;}
-}
-
-@keyframes blink{
-50%{border-color:transparent;}
+@keyframes signatureShine{
+0%{background-position:0%}
+100%{background-position:250%}
 }
 
   .dedicatoria{
@@ -326,7 +338,7 @@ llegué para amarte, para acompañarte y para quedarme contigo en cada capítulo
   </div>
   
 <div class="signature">
-Con todo mi amor
+Con todo mi amor, para ti mi vida entera 
   <p><strong>JUAN KALETH MENDOZA PRIMERA 💜</strong></p>
 </div>
 
