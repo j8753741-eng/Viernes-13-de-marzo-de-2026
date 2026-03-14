@@ -225,7 +225,7 @@ line-height:1.8;
 
 <div class="envelope" id="sobre"></div>
 
-<button class="openBtn" onclick="abrirCarta()">💌 Abrir mi carta</button>
+<button class="openBtn" id="btnAbrir">💌 Abrir la carta</button>
 
 </div>
 
@@ -348,18 +348,26 @@ Con todo mi amor
 
 <script>
 
-function abrirCarta(){
+const boton = document.getElementById("btnAbrir");
+const sobre = document.getElementById("sobre");
+const inicio = document.getElementById("inicio");
+const carta = document.getElementById("carta");
 
-document.getElementById("sobre").classList.add("open");
+boton.addEventListener("click", function(){
 
-setTimeout(()=>{
-document.getElementById("inicio").style.display="none";
-document.getElementById("carta").style.display="block";
-},900);
+    // abrir el sobre
+    sobre.classList.add("open");
 
-}
+    // esperar animación y mostrar carta
+    setTimeout(function(){
+
+        inicio.style.display = "none";
+        carta.style.display = "block";
+
+    }, 800);
+
+});
 
 </script>
-
 </body>
 </html>
