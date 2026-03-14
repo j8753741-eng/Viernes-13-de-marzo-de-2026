@@ -4,129 +4,207 @@
 <meta charset="UTF-8">
 <title>Carta de Amor</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-padding:0;
-background:linear-gradient(180deg,#050510,#0d0d25,#1a0f2e);
-font-family:'Poppins',serif;
-color:#f2e9ff;
+height:100vh;
+background:linear-gradient(180deg,#02020a,#0c0620,#160c2e);
+font-family:Poppins;
 display:flex;
-justify-content:center;
 align-items:center;
-min-height:100vh;
-overflow-x:hidden;
+justify-content:center;
+color:white;
+overflow:hidden;
 }
 
-/* estrellas */
+/* estrellas fondo */
 
 .stars{
 position:fixed;
 width:100%;
 height:100%;
-background:url('https://www.transparenttextures.com/patterns/stardust.png');
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
 opacity:0.4;
-animation:moveStars 80s linear infinite;
+animation:starsMove 150s linear infinite;
 }
 
-@keyframes moveStars{
+@keyframes starsMove{
 from{background-position:0 0;}
 to{background-position:10000px 5000px;}
 }
 
-/* carta */
+/* estrellas fugaces */
 
-.carta{
-position:relative;
-max-width:800px;
-background:rgba(20,12,40,0.75);
-padding:60px;
-border-radius:20px;
-box-shadow:0 0 40px rgba(170,120,255,0.3);
-backdrop-filter:blur(8px);
-border:1px solid rgba(255,255,255,0.08);
-animation:aparecer 2s ease;
+.shooting-star{
+position:fixed;
+width:2px;
+height:80px;
+background:linear-gradient(white,transparent);
+opacity:0;
+transform:rotate(45deg);
+animation:shoot 5s linear infinite;
 }
 
-@keyframes aparecer{
+@keyframes shoot{
+0%{opacity:0; transform:translate(-200px,-200px) rotate(45deg);}
+10%{opacity:1;}
+100%{opacity:0; transform:translate(1200px,800px) rotate(45deg);}
+}
+
+/* corazones */
+
+.heart{
+position:fixed;
+bottom:-20px;
+color:#c084ff;
+font-size:18px;
+animation:floatUp 10s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+from{transform:translateY(0);}
+to{transform:translateY(-100vh);}
+}
+
+/* SOBRE */
+
+.envelopeContainer{
+text-align:center;
+}
+
+.envelope{
+width:200px;
+height:120px;
+background:#7c3aed;
+margin:auto;
+position:relative;
+border-radius:6px;
+box-shadow:0 0 25px rgba(160,120,255,0.6);
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:-60px;
+left:0;
+border-left:100px solid transparent;
+border-right:100px solid transparent;
+border-bottom:60px solid #9f67ff;
+transform-origin:bottom;
+transition:0.6s;
+}
+
+.envelope.open:before{
+transform:rotateX(180deg);
+}
+
+.openBtn{
+margin-top:25px;
+padding:12px 28px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#c084ff,#7c3aed);
+color:white;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(180,120,255,0.6);
+}
+
+/* CARTA */
+
+.carta{
+display:none;
+max-width:760px;
+padding:55px;
+border-radius:20px;
+
+background:
+linear-gradient(rgba(40,15,70,0.85),rgba(20,5,40,0.85)),
+url("https://www.transparenttextures.com/patterns/old-paper.png");
+
+box-shadow:0 0 45px rgba(160,120,255,0.4);
+border:1px solid rgba(255,255,255,0.1);
+
+animation:fade 2s;
+}
+
+@keyframes fade{
 from{opacity:0; transform:translateY(40px);}
 to{opacity:1; transform:translateY(0);}
 }
 
-/* titulo */
-
 .titulo{
-font-family:'Great Vibes',cursive;
-font-size:60px;
+font-family:Great Vibes;
+font-size:55px;
 text-align:center;
-color:#e0c3ff;
-margin-bottom:30px;
-text-shadow:0 0 15px rgba(200,150,255,0.6);
+color:#e9d5ff;
+margin-bottom:10px;
 }
 
-/* fecha */
-
-.fecha{
+.starName{
 text-align:center;
-font-style:italic;
-margin-bottom:40px;
-opacity:0.8;
+font-size:26px;
+margin-bottom:25px;
+letter-spacing:4px;
+color:#fff;
+text-shadow:0 0 10px #fff,0 0 25px #c084ff;
+animation:twinkle 3s infinite alternate;
 }
 
-/* texto */
+@keyframes twinkle{
+from{opacity:0.7;}
+to{opacity:1;}
+}
 
 .texto{
+line-height:1.8;
 font-size:18px;
-line-height:1.9;
-text-align:justify;
+color:#f3e8ff;
 }
-
-/* primera letra elegante */
-
-.texto p:first-child::first-letter{
-font-size:60px;
-font-family:'Playfair Display',serif;
-float:left;
-line-height:1;
-padding-right:10px;
-color:#d4a8ff;
-}
-
-/* promesas */
 
 .promesas{
-margin:30px 0;
+margin:25px 0;
 padding-left:20px;
 }
 
 .promesas div{
 margin:8px 0;
-font-weight:500;
-}
-
-/* frase final */
-
-.fraseFinal{
-margin-top:50px;
-font-family:'Playfair Display',serif;
-font-size:22px;
-text-align:center;
-color:#e8ccff;
-border-top:1px solid rgba(255,255,255,0.2);
-padding-top:30px;
 }
 
 /* firma */
 
-.firma{
+.signature{
 margin-top:40px;
-text-align:right;
-font-family:'Great Vibes',cursive;
-font-size:36px;
-color:#d9b8ff;
+font-family:Great Vibes;
+font-size:40px;
+white-space:nowrap;
+overflow:hidden;
+border-right:3px solid;
+width:0;
+animation:typing 4s steps(30,end) forwards, blink .7s infinite;
+}
+
+@keyframes typing{
+to{width:280px;}
+}
+
+@keyframes blink{
+50%{border-color:transparent;}
+}
+
+.dedicatoria{
+margin-top:45px;
+font-size:20px;
+text-align:center;
+font-family:Playfair Display;
+color:#e9d5ff;
+border-top:1px solid rgba(255,255,255,0.2);
+padding-top:25px;
+line-height:1.8;
 }
 
 </style>
@@ -136,11 +214,26 @@ color:#d9b8ff;
 
 <div class="stars"></div>
 
-<div class="carta">
+<div class="shooting-star" style="top:10%;left:20%;animation-delay:1s;"></div>
+<div class="shooting-star" style="top:30%;left:60%;animation-delay:3s;"></div>
 
-<div class="titulo">Para Ti</div>
+<div class="heart" style="left:20%">💜</div>
+<div class="heart" style="left:50%;animation-delay:3s;">💜</div>
+<div class="heart" style="left:75%;animation-delay:6s;">💜</div>
 
-<div class="fecha">Viernes 13 de marzo de 2026 — Una noche para recordarte cuánto te amo</div>
+<div class="envelopeContainer" id="inicio">
+
+<div class="envelope" id="sobre"></div>
+
+<button class="openBtn" onclick="abrirCarta()">💌 Abrir mi carta</button>
+
+</div>
+
+<div class="carta" id="carta">
+
+<div class="titulo">Para Ti mi niña linda</div>
+
+<div class="starName">✨ VALERIA PETRO VILLAZÓN ✨</div>
 
 <div class="texto">
 
@@ -221,22 +314,52 @@ Y si esta noche el cielo tiene estrellas… quiero que sepas que cada una de ell
 </p>
 
 <p style="text-align:center; font-size:22px; margin-top:20px;">
-<strong>Te amo más de lo que las palabras pueden explicar.</strong>
+<strong>Te amo como un fuego que arde en la arena del Capitolio, feroz e indomable, desafiando cada obstáculo que se interpone entre nosotros. Eres mi aliado en esta arena de incertidumbre, y juntos, somos más fuertes que cualquier adversidad.</strong>
 </p>
 
 </div>
 
-<div class="fraseFinal">
-Llegué a tu vida no solo para amarte,  
-sino para quedarme, cuidarte y apoyarte siempre,  
-en cada sueño, en cada paso y en cada momento de tu vida.
-</div>
+  <div class="dedicatoria">
 
-<div class="firma">
+Llegué a tu vida con un sentimiento que no sabía explicar al principio, pero que con el tiempo entendí que era algo profundo, real y eterno.
+
+Llegué para quedarme.
+
+Para caminar a tu lado en cada etapa de tu vida.
+
+Para apoyarte cuando el camino sea difícil y celebrar contigo cuando la felicidad llegue.
+
+Llegué para cuidar tu corazón, para proteger tu sonrisa y para recordarte siempre lo valiosa, fuerte y especial que eres.
+
+Y mientras el universo siga teniendo estrellas en el cielo, quiero que sepas que mi lugar siempre será a tu lado.
+
+Porque no llegué a tu vida por casualidad…
+
+llegué para amarte, para acompañarte y para quedarme contigo en cada capítulo de nuestra historia.
+
+  </div>
+  
+<div class="signature">
 Con todo mi amor
+  <p><strong>JUAN KALETH MENDOZA PRIMERA 💜</strong></p>
 </div>
 
 </div>
+
+<script>
+
+function abrirCarta(){
+
+document.getElementById("sobre").classList.add("open");
+
+setTimeout(()=>{
+document.getElementById("inicio").style.display="none";
+document.getElementById("carta").style.display="block";
+},900);
+
+}
+
+</script>
 
 </body>
-  </html>
+</html>
